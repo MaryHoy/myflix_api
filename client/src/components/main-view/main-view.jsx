@@ -115,7 +115,7 @@ export class MainView extends React.Component {
 
   updateUser(data) {
     this.setState({
-      userInfo: data
+      profileData: data
     });
     localStorage.setItem('user', data.Username);
   }

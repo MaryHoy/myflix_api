@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
+import { Redirect } from 'react-router';
 
 
 import './profile-view.scss';
@@ -19,7 +20,7 @@ export function UpdateProfile(props) {
     e.preventDefault();
     console.log();
     axios.put(`http://localhost:3000/users/${localStorage.getItem('user')}`, {
-      username: username, 
+      username: username,
       password: password, 
       birthday: birthday, 
       email: email,
@@ -30,7 +31,7 @@ export function UpdateProfile(props) {
       const data = res.data;
       console.log(data);
       alert('Your profile was updated successfully!');
-      window.open(`/users/${localStorage.getItem('user')}`);
+      return <Redirect to={`/users/${localStorage.getItem('user')}`} />;
     })
     .catch(error => {
       alert('Error updating user ');
@@ -62,7 +63,7 @@ export function UpdateProfile(props) {
           <Button className='update-btn' variant="primary" type="submit" onClick={handleSubmit}>
             Update
           </Button>
-          <Link to={`/users/:Username`}>
+          <Link to={`/users/${localStorage.getItem('user')}`}>
              <Button className='back-btn' variant='primary'>Go back</Button>
            </Link>
 

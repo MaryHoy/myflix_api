@@ -18,7 +18,7 @@ export class ProfileView extends React.Component {
       email: null,
       birthday: null,
       userData: null,
-      favoriteMovies: []
+      FavoriteMovies: []
     };
   }
 
@@ -40,7 +40,7 @@ export class ProfileView extends React.Component {
           password: response.data.Password,
           email: response.data.Email,
           birthday: response.data.Birthday,
-          favoriteMovies: response.data.FavoriteMovies
+          FavoriteMovies: response.data.FavoriteMovies
         });
       })
       .catch(function (error) {
@@ -94,7 +94,7 @@ export class ProfileView extends React.Component {
   }
 
   render() {
-    const { username, email, birthday, favoriteMovies } = this.state;
+    const { username, email, birthday, FavoriteMovies } = this.state;
     
 
     return (
@@ -106,7 +106,7 @@ export class ProfileView extends React.Component {
             <ListGroup.Item>Password: ***** </ListGroup.Item>
             <ListGroup.Item>Email: {email}</ListGroup.Item>
             <ListGroup.Item>Birthday: {birthday && birthday.slice(0, 10)}</ListGroup.Item>
-            <ListGroup.Item>Favorite Movies: {favoriteMovies}</ListGroup.Item>
+            <ListGroup.Item>Favorite Movies: {FavoriteMovies}</ListGroup.Item>
             </ListGroup>
             <div className="text-center">
             <Link to={'/user/update'}>

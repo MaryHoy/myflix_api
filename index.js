@@ -119,7 +119,7 @@ app.get(
   "/users/:username",
   passport.authenticate("jwt", { session: false }),
   function(req, res) {
-    users.findOne({ username: req.params.username })
+    users.findOne({ Username: req.params.username })
       .then(function(user) {
         res.json(user);
       })
@@ -181,15 +181,15 @@ app.put(
   "/users/:username",
   passport.authenticate("jwt", { session: false }),
   [
-    check("Username", "username is required").isLength({ min: 5 }),
+    check("username", "username is required").isLength({ min: 5 }),
     check(
-      "Username",
+      "username",
       "username contained non alphanumeric characters - not allowed."
     ).isAlphanumeric(),
-    check("Password", "password is required")
+    check("password", "password is required")
       .not()
       .isEmpty(),
-    check("Email", "email does not appear to be valid").isEmail()
+    check("email", "email does not appear to be valid").isEmail()
   ],
   (req, res) => {
     var errors = validationResult(req);
@@ -228,9 +228,9 @@ app.post(
   passport.authenticate("jwt", { session: false }),
   function(req, res) {
     users.findOneAndUpdate(
-      { username: req.params.username },
+      { Username: req.params.username },
       {
-        $push: { Favorites: req.params.MovieID }
+        $push: { FavoriteMovies: req.params.MovieID }
       },
       { new: true },
       function(err, updateduser) {
@@ -238,6 +238,7 @@ app.post(
           console.error(err);
           res.status(500).send("Error: " + err);
         } else {
+            console.log(err);
           res.json(updateduser);
         }
       }
@@ -250,9 +251,9 @@ app.delete(
   passport.authenticate("jwt", { session: false }),
   function(req, res) {
     users.findOneAndUpdate(
-      { username: req.params.username },
+      { Username: req.params.username },
       {
-        $pull: { Favorites: req.params.MovieID }
+        $pull: { FavoriteMovies: req.params.MovieID }
       },
       { new: true },
       function(err, updateduser) {
@@ -271,7 +272,7 @@ app.delete(
   "/users/:username",
   passport.authenticate("jwt", { session: false }),
   function(req, res) {
-    users.findOneAndRemove({ username: req.params.username })
+    users.findOneAndRemove({ Username: req.params.username })
       .then(function(user) {
         if (!user) {
           res.status(400).send((req.params.username = " was not found"));
