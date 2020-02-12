@@ -1,0 +1,7 @@
+# Ignore folder named "node_modules" node_modules/
+node_modules
+# Ignore file named ".DS_Store" .DS_Store/
+DS_Store
+# Ignore file named ".cache" .cache/
+.cache
+dist

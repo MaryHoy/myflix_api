@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>myFlix</title>
+  </head>
+  <body>
+    <h1>Documentation</h1>
+    <p>A web appplication allows users to access information about movies along with genres of movies and directors. users will be able to log in and search by genre, movie title, or director and save lists of favorites in each category.
+    </p>
+    <table style="width:100%">
+        <tr>
+          <th>Description</th>
+          <th>URL: http://localhost:3000/movies</th>
+          <th>Method</th>
+        </tr>
+        <tr>
+          <td>Query</td>
+          <td>Request</td>
+          <td>Response</td>
+        </tr>
+      </table>
+
+      <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>myFlix</title>
+  </head>
+
+  <body>
+
+    <p>A web appplication allows users to access information about movies along with genres of movies and directors. users will be able to log in and search by genre, movie title, or director and save lists of favorites in each category.
+      </p>
+
+    <p>
+      Endpoint of this API:
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th>URL</th>
+          <th>HTTP</th>
+          <th>Query</th>
+          <th>Request</th>
+          <th>Response</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Get a list of all movies</td>
+          <td>/movies</td>
+          <td>GET</td>
+          <td>None</td>
+          <td>
+            JSON object that returns a list of ALL movies to the user:
+            <p>
+              { Title: "Silence Of the Lambs", Description: "A young FBI cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer.",
+              Genre: {Name: "thriller", Description: "Thriller film, also known as suspense film or suspense thriller, is a broad film genre that involves excitement and suspense in the audience. Tension is created by delaying what the audience sees as inevitable, and is built through situations that are menacing or where escape seems impossible."}, Director: {Name: "Johnathan Demme", Bio:
+              "Robert Jonathan Demme was an American director, producer, and screenwriter.", Birth: "1944", Death:
+              "Unknown"}, ImagePath:
+              "silenceofthelambs.png", Featured: false}
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td>Get data about a selected movie by title</td>
+          <td>/movies/[title]</td>
+          <td>GET</td>
+          <td>None</td>
+          <td>
+              JSON object that returns data of a specific movie title (description, genre, director, image URL, whether it’s featured or not) about a single movie by title to the user:
+          </td>
+        </tr>
+        <tr>
+          <td>Get data about a specific genre:</td>
+          <td>/genre/[name]</td>
+          <td>GET</td>
+          <td>None</td>
+          <td>
+            JSON object holding data about a movie genre(description) by name/title (e.g., “Thriller”):
+            <p>
+                {Name: "thriller", Description: "Thriller film, also known as suspense film or suspense thriller, is a broad film genre that involves excitement and suspense in the audience. Tension is created by delaying what the audience sees as inevitable, and is built through situations that are menacing or where escape seems impossible."}
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td>Get data about a specific director (bio, birth year, death year) by name:</td>
+          <td>/director/[name]</td>
+          <td>GET</td>
+          <td>None</td>
+          <td>
+            JSON object holding data about a specific director:
+            <p>
+                Director: {Name: "Johnathan Demme", Bio:
+                "Robert Jonathan Demme was an American director, producer, and screenwriter.", Birth: "1944", Death: "N/A"}
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td>Creating a new user:</td>
+          <td>/users</td>
+          <td>POST</td>
+          <td>
+            JSON object to Allow new users to register:
+            <p>
+              {username: "John Doe", password: "John88", email:
+              "johndoe@gmail.com", dateofbirth: "1990-10-10"}
+            </p>
+          </td>
+          <td>
+            JSON object to add a user:
+            <p>
+                {username: "John Doe", password: "John88", email:
+                "johndoe@gmail.com", dateofbirth: "1990-10-10"}
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td>Update user's information:</td>
+          <td>/users/[username]</td>
+          <td>PUT</td>
+          <td>
+            JSON object Allows users to update their user info (username, password, email, date of birth):
+            <p>
+                {username: "John Doe", password: "John88", email:
+                "johndoe@gmail.com", dateofbirth: "1990-10-10"}
+            </p>
+          </td>
+          <td>A message to confirm that the user's information was updated successfully:</td>
+        </tr>
+        <tr>
+          <td>Add a movie to the user's favorite movies:</td>
+          <td>/favorites/[username]/movies/[movieID]</td>
+          <td>POST</td>
+          <td>None</td>
+          <td>
+              A message to confirm that a movie was successfully added to the user's favorites:
+          </td>
+        </tr>
+        <tr>
+          <td>Delete a movie from the user's favorites movies:</td>
+          <td>/favorites/[username]/movies/[movieID]</td>
+          <td>DELETE</td>
+          <td>None</td>
+          <td>
+              A message to confirm that a movie was successfully removed from the user's favorites:
+          </td>
+        </tr>
+        <tr>
+          <td>Allow existing users to deregister</td>
+          <td>/users/[username]</td>
+          <td>DELETE</td>
+          <td>None</td>
+          <td>A message to confirm that the user was successfully removed:</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

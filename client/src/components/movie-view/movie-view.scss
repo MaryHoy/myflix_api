@@ -1,0 +1,27 @@
+.movie-view-card{
+    padding: 20px ;
+    .movie-view {
+      text-align: center;
+  
+      .label{
+        font-weight: 700;
+      }
+  
+      .movie-title,
+      .movie-director,
+      .movie-genre,
+      .movie-description,
+      .back-button {
+        text-align: left;
+      }
+  
+      .buttons-container{
+        padding: 10px 0 0 0;
+      }
+    }
+  
+    img{
+      width: 300px;
+  
+    }
+  }
