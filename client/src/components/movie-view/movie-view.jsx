@@ -7,8 +7,11 @@ import './movie-view.scss';
 export class MovieView extends React.Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      favouriteMovies: []
+    };
   }
+
 
   addToFavorites(e) {
     const { movie } = this.props;
@@ -32,6 +35,23 @@ export class MovieView extends React.Component {
         alert(`${movie.Title} not added to your favorites` + error)
       });
   }
+
+  deleteFavorite(movieId) {
+    axios.delete(`http://localhost:3000/users/${localStorage.getItem('user')}/Movies/${movieId}`, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+    })
+      .then(res => {
+        document.location.reload(true);
+      })
+      .then(res => {
+        alert('Movie successfully deleted from favorites');
+      })
+
+      .catch(e => {
+        alert('Movie could not be deleted from favorites ' + e)
+      });
+  }
+
 
   render() {
     const { movie } = this.props;
@@ -70,6 +90,7 @@ export class MovieView extends React.Component {
           <Button variant="primary">
             Back to Movies
           </Button>
+          <Button variant="danger" className="delete-movie" onClick={e => this.deleteFavorite(movie._id)}>Delete Favorite</Button>
         </Link>
       </div>
       </div>

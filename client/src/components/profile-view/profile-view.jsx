@@ -74,7 +74,6 @@ export class ProfileView extends React.Component {
       });
   }
 
-
   deleteFavoriteMovie(movieId) {
     console.log(this.props.movies);
       // send a request to the server for authentication
@@ -95,7 +94,6 @@ export class ProfileView extends React.Component {
 
   render() {
     const { username, email, birthday, FavoriteMovies } = this.state;
-    
 
     return (
       <Card className="profile-view" style={{ width: '32rem' }}>
@@ -106,19 +104,18 @@ export class ProfileView extends React.Component {
             <ListGroup.Item>Password: ***** </ListGroup.Item>
             <ListGroup.Item>Email: {email}</ListGroup.Item>
             <ListGroup.Item>Birthday: {birthday && birthday.slice(0, 10)}</ListGroup.Item>
-            <ListGroup.Item>Favorite Movies: {FavoriteMovies}</ListGroup.Item>
-            </ListGroup>
-            <div className="text-center">
+            </ListGroup>            
+            <div className="text-center">        
             <Link to={'/user/update'}>
                           <Button variant='primary'>Update Profile</Button>
                       </Link>
-                      <Link to={'/user'}>
-                          <Button variant='primary' onClick={() => this.deleteFavoriteMovie()}>Delete Favorite</Button>
+                      <Link to={`/movies/${FavoriteMovies}`}>
+                          <Button variant='primary' className="button-back">Favorites</Button>
                       </Link>
             <Link to={`/`}>
               <Button variant="primary" className="button-back">Back to movies</Button>
             </Link>
-            <Link to={`/`}>
+            <Link to={`/user`}>
               <Button variant="danger" className="delete-button" onClick={() => this.deleteProfile()}>Delete my profile</Button>
               </Link>
           </div>
