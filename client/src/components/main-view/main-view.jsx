@@ -144,6 +144,7 @@ export class MainView extends React.Component {
     if (!movies) return <div className="main-view" />;
 
     return (
+      <Router>
       <Router basename="/client">
         <div className="main-view">
           <Link to={`/users/${user}`}>
@@ -183,6 +184,7 @@ export class MainView extends React.Component {
             }}
           />
         </div>
+      </Router>
       </Router>
     );
   }
