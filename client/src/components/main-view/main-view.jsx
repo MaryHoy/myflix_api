@@ -1,7 +1,10 @@
 import axios from 'axios';
 import React from 'react';
+
+import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Link } from 'react-router-dom';
+import { setMovies } from '../../actions/actions';
 
 import { MovieCard } from '../movie-card/movie-card';
 import Button from 'react-bootstrap/Button';
@@ -140,7 +143,7 @@ export class MainView extends React.Component {
     if (!movies) return <div className="main-view" />;
 
     return (
-      <Router>
+      <Router basename="/client">
         <div className="main-view">
           <Link to={`/users/${user}`}>
             <Button variant="primary" type="submit">Profile
@@ -183,4 +186,10 @@ export class MainView extends React.Component {
     );
   }
 }
+
+let mapStateToProps = state => {
+  return { movies: state.movies }
+}
+
+export default connect(mapStateToProps, { setMovies } )(MainView);
 
