@@ -41,7 +41,7 @@ export class MainView extends React.Component {
   }
 
   getProfileData(token) {
-    axios.get(`http://localhost:3000/users/${localStorage.getItem('user')}`, {
+    axios.get(`https://hoymyflix.herokuapp.com/users/${localStorage.getItem('user')}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(response => {
@@ -67,7 +67,7 @@ export class MainView extends React.Component {
 
   getMovies(token) {
     axios
-      .get("http://localhost:3000/movies", {
+      .get("https://hoymyflix.herokuapp.com/movies", {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then(response => {

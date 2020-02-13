@@ -31,7 +31,7 @@ export class ProfileView extends React.Component {
 
   getUser(token) {
     let username = localStorage.getItem('user');
-    axios.get(`http://localhost:3000/users/${username}`, {
+    axios.get(`https://hoymyflix.herokuapp.com/users/${username}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(response => {
@@ -49,7 +49,7 @@ export class ProfileView extends React.Component {
   }
 
   deleteProfile() {
-    axios.delete(`http://localhost:3000/users/${localStorage.getItem('user')}`,
+    axios.delete(`https://hoymyflix.herokuapp.com/users/${localStorage.getItem('user')}`,
       {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       })
@@ -77,7 +77,7 @@ export class ProfileView extends React.Component {
   deleteFavoriteMovie(movieId) {
     console.log(this.props.movies);
       // send a request to the server for authentication
-      axios.delete(`http://localhost:3000/users/${localStorage.getItem('user')}/Movies/${movieId}`, {
+      axios.delete(`https://hoymyflix.herokuapp.com/users/${localStorage.getItem('user')}/Movies/${movieId}`, {
          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       })
       .then(res => {

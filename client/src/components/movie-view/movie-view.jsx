@@ -17,7 +17,7 @@ export class MovieView extends React.Component {
     const { movie } = this.props;
     e.preventDefault();
     axios.post(
-      `http://localhost:3000/users/${localStorage.getItem('user')}/Movies/${movie._id}`,
+      `https://hoymyflix.herokuapp.com/users/${localStorage.getItem('user')}/Movies/${movie._id}`,
       { username: localStorage.getItem('user') },
       {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
@@ -37,7 +37,7 @@ export class MovieView extends React.Component {
   }
 
   deleteFavorite(movieId) {
-    axios.delete(`http://localhost:3000/users/${localStorage.getItem('user')}/Movies/${movieId}`, {
+    axios.delete(`https://hoymyflix.herokuapp.com/users/${localStorage.getItem('user')}/Movies/${movieId}`, {
       headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
     })
       .then(res => {

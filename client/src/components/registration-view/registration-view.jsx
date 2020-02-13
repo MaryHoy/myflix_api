@@ -15,7 +15,7 @@ export function RegistrationView(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:3000/users', {
+    axios.post('https://hoymyflix.herokuapp.com/users', {
       username: username,
       password: password,
       email: email,
