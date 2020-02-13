@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import { setMovies } from '../../actions/actions';
 
+import MoviesList from '../movies-list/movies-list';
 import { MovieCard } from '../movie-card/movie-card';
 import Button from 'react-bootstrap/Button';
 import { MovieView } from '../movie-view/movie-view';
