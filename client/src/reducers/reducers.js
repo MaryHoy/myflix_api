@@ -1,41 +1,39 @@
 import { combineReducers } from 'redux';
 
-import { SET_MOVIES, SET_FILTER, SET_USER_PROFILE } from '../actions/actions';
-
-// reducer takes current state and an action as arguments and figures out the new state. 
-// state argument is assigned to a initial state at the beginning.
+import { SET_FILTER, SET_MOVIES, SET_LOGGEDIN } from '../actions/actions';
 
 function visibilityFilter(state = '', action) {
-  switch (action.type) {
-    case SET_FILTER:
-      return action.value;
-    default:
-      return state;
-  }
+    switch (action.type) {
+        case SET_FILTER:
+            return action.value;
+        default:
+            return state;
+    }
 }
+
 
 function movies(state = [], action) {
-  switch (action.type) {
-    case SET_MOVIES:
-      return action.value;
-    default:
-      return state;
-  }
+    switch (action.type) {
+        case SET_MOVIES:
+            return action.value;
+        default:
+            return state;
+    }
 }
 
-function userProfile(state = {}, action) {
-  switch (action.type) {
-    case SET_USER_PROFILE:
-      return action.value;
-    default:
-      return state;
-  }
+function loggedInUser(state = [], action) {
+    switch(action.type) {
+        case SET_LOGGEDIN:
+            return action.value
+        default:
+            return state;
+    }
 }
 
 const moviesApp = combineReducers({
-  visibilityFilter,
-  movies,
-  userProfile
-});
+    visibilityFilter,
+    movies,
+    loggedInUser,
+})
 
 export default moviesApp;
