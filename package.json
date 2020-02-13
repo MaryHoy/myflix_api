@@ -32,11 +32,11 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MaryHoy/movie_api2.git"
+    "url": "git+https://github.com/MaryHoy/myflix_api.git"
   },
   "keywords": [],
   "bugs": {
-    "url": "https://github.com/MaryHoy/movie_api2/issues"
+    "url": "https://github.com/MaryHoy/myflix_api/issues"
   },
-  "homepage": "https://github.com/MaryHoy/movie_api2#readme"
+  "homepage": "https://github.com/MaryHoy/myflix_api#readme"
 }
