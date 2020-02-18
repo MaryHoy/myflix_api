@@ -43764,11 +43764,12 @@ function (_React$Component) {
   }, {
     key: "onLoggedOut",
     value: function onLoggedOut() {
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      localStorage.removeItem('movies');
       this.setState({
         user: null
       });
-      localStorage.removeItem("token");
-      localStorage.removeItem("user");
     }
   }, {
     key: "onSignedIn",
