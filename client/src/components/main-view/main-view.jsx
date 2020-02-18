@@ -129,32 +129,24 @@ class MainView extends React.Component {
 
   render() {
     let { movies } = this.props;
-    let { register } = this.state;
     let { profileData } = this.props;
     let { user } = this.state;
 
     return (
-<Router basename="/client">
-           <div className="main-view">
-           <Link to={`/users/${user}`}>
+      <Router>
+         <div className="main-view">
+         <Link to={`/users/${user}`}>
             <Button variant="primary" type="submit">Profile
              </Button>
           </Link>
           <Button variant="primary" type="submit" onClick={() => this.onLoggedOut()}>Logout
           </Button>
           <Route exact path="/" render={() => {
-              if (!user) return ( <LoginView onLoggedIn={user => this.onLoggedIn(user)}
-                  />
-                );
-              return movies.map(m => ( <MovieCard key={m._id} movie={m} />
-              ));
-            }}
-          />
-          <Route exact path="/movies/:movieId" render={({ match }) => (
-              <MovieView movie={movies.find(m => m._id === match.params.movieId)}
-              />
-            )}
-          />
+             if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+             return <MoviesList movies={movies}/>;
+         }} />
+          <Route path="/movies/:movieId" render={({match}) => <MovieView movie={movies.find(m => m._id === match.params.movieId)}/>}/>
+          <Route path="/register" render={() => <RegistrationView />} />
           <Route path="/users/:Username" render={() => { 
             return <ProfileView profileData={profileData} /> }} />
           <Route exact path="/user" render={() => <ProfileView movies={movies} />} />
@@ -172,12 +164,6 @@ class MainView extends React.Component {
               );
             }}
           />
-           <Route exact path="/" render={() => {
-             if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
-             return <MoviesList movies={movies}/>;
-         }} />
-           <Route path="/register" render={() => <RegistrationView />} />
-           <Route path="/movies/:movieId" render={({match}) => <MovieView movie={movies.find(m => m._id === match.params.movieId)}/>}/>
          </div>
       </Router>
     );

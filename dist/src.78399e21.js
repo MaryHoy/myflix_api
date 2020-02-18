@@ -43799,12 +43799,9 @@ function (_React$Component) {
       var _this4 = this;
 
       var movies = this.props.movies;
-      var register = this.state.register;
       var profileData = this.props.profileData;
       var user = this.state.user;
-      return _react.default.createElement(_reactRouterDom.BrowserRouter, {
-        basename: "/client"
-      }, _react.default.createElement("div", {
+      return _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement("div", {
         className: "main-view"
       }, _react.default.createElement(_reactRouterDom.Link, {
         to: "/users/".concat(user)
@@ -43826,15 +43823,11 @@ function (_React$Component) {
               return _this4.onLoggedIn(user);
             }
           });
-          return movies.map(function (m) {
-            return _react.default.createElement(_movieCard.MovieCard, {
-              key: m._id,
-              movie: m
-            });
+          return _react.default.createElement(_moviesList.default, {
+            movies: movies
           });
         }
       }), _react.default.createElement(_reactRouterDom.Route, {
-        exact: true,
         path: "/movies/:movieId",
         render: function render(_ref) {
           var match = _ref.match;
@@ -43843,6 +43836,11 @@ function (_React$Component) {
               return m._id === match.params.movieId;
             })
           });
+        }
+      }), _react.default.createElement(_reactRouterDom.Route, {
+        path: "/register",
+        render: function render() {
+          return _react.default.createElement(_registrationView.RegistrationView, null);
         }
       }), _react.default.createElement(_reactRouterDom.Route, {
         path: "/users/:Username",
@@ -43889,34 +43887,6 @@ function (_React$Component) {
             director: movies.find(function (m) {
               return m.Director.Name === match.params.name;
             }).Director
-          });
-        }
-      }), _react.default.createElement(_reactRouterDom.Route, {
-        exact: true,
-        path: "/",
-        render: function render() {
-          if (!user) return _react.default.createElement(_loginView.LoginView, {
-            onLoggedIn: function onLoggedIn(user) {
-              return _this4.onLoggedIn(user);
-            }
-          });
-          return _react.default.createElement(_moviesList.default, {
-            movies: movies
-          });
-        }
-      }), _react.default.createElement(_reactRouterDom.Route, {
-        path: "/register",
-        render: function render() {
-          return _react.default.createElement(_registrationView.RegistrationView, null);
-        }
-      }), _react.default.createElement(_reactRouterDom.Route, {
-        path: "/movies/:movieId",
-        render: function render(_ref4) {
-          var match = _ref4.match;
-          return _react.default.createElement(_movieView.MovieView, {
-            movie: movies.find(function (m) {
-              return m._id === match.params.movieId;
-            })
           });
         }
       })));
@@ -44094,7 +44064,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54748" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62819" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
