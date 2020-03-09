@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import axios from 'axios';
 import './login-view.scss';
+import { Link } from "react-router-dom";
 
 export function LoginView(props) {
   const [username, setUsername] = useState('');
@@ -44,7 +45,10 @@ export function LoginView(props) {
         </Button>
 
         <Form.Group controlId='newUser'>
-          <Form.Text>New User? <Button variant= 'primary' id='registerButton' onClick={() => props.onClick()}> Register! </Button>
+          <Form.Text>New User? 
+          <Link to={`/register`}>
+            <Button variant= 'primary' id='registerButton' onClick={() => props.onClick()}> Register! </Button>
+          </Link>
           </Form.Text>
         </Form.Group>
     </form>

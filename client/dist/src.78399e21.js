@@ -41842,6 +41842,8 @@ var _axios = _interopRequireDefault(require("axios"));
 
 require("./login-view.scss");
 
+var _reactRouterDom = require("react-router-dom");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
@@ -41907,15 +41909,17 @@ function LoginView(props) {
     onClick: handleSubmit
   }, "Log in"), _react.default.createElement(_Form.default.Group, {
     controlId: "newUser"
-  }, _react.default.createElement(_Form.default.Text, null, "New User? ", _react.default.createElement(_Button.default, {
+  }, _react.default.createElement(_Form.default.Text, null, "New User?", _react.default.createElement(_reactRouterDom.Link, {
+    to: "/register"
+  }, _react.default.createElement(_Button.default, {
     variant: "primary",
     id: "registerButton",
     onClick: function onClick() {
       return props.onClick();
     }
-  }, " Register! ")))));
+  }, " Register! "))))));
 }
-},{"react":"../node_modules/react/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","axios":"../node_modules/axios/index.js","./login-view.scss":"components/login-view/login-view.scss"}],"components/genre-view/genre-view.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","axios":"../node_modules/axios/index.js","./login-view.scss":"components/login-view/login-view.scss","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js"}],"components/genre-view/genre-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -43620,7 +43624,7 @@ module.hot.accept(reloadCSS);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.MainView = void 0;
+exports.default = void 0;
 
 var _axios = _interopRequireDefault(require("axios"));
 
@@ -43679,12 +43683,12 @@ var MainView =
 function (_React$Component) {
   _inherits(MainView, _React$Component);
 
-  function MainView(props) {
+  function MainView() {
     var _this;
 
     _classCallCheck(this, MainView);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(MainView).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(MainView).call(this));
     _this.state = {
       movies: [],
       user: null,
@@ -43745,9 +43749,7 @@ function (_React$Component) {
           Authorization: "Bearer ".concat(token)
         }
       }).then(function (response) {
-        _this3.setState({
-          movies: response.data
-        });
+        _this3.props.setMovies(response.data);
       }).catch(function (error) {
         console.log(error);
       });
@@ -43756,22 +43758,22 @@ function (_React$Component) {
   }, {
     key: "onLoggedIn",
     value: function onLoggedIn(authData) {
-      console.log(authData);
       this.setState({
         user: authData.user.Username
       });
-      localStorage.setItem("token", authData.token);
-      localStorage.setItem("user", authData.user.Username);
+      localStorage.setItem('token', authData.token);
+      localStorage.setItem('user', authData.user.Username);
       this.getMovies(authData.token);
     }
   }, {
     key: "onLoggedOut",
     value: function onLoggedOut() {
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      localStorage.removeItem('movies');
       this.setState({
         user: null
       });
-      localStorage.removeItem("token");
-      localStorage.removeItem("user");
     }
   }, {
     key: "onSignedIn",
@@ -43801,31 +43803,10 @@ function (_React$Component) {
     value: function render() {
       var _this4 = this;
 
-      var _this$state = this.state,
-          movies = _this$state.movies,
-          user = _this$state.user,
-          register = _this$state.register,
-          profileData = _this$state.profileData;
-      if (!user && register === false) return _react.default.createElement(_loginView.LoginView, {
-        onClick: function onClick() {
-          return _this4.register();
-        },
-        onLoggedIn: function onLoggedIn(user) {
-          return _this4.onLoggedIn(user);
-        }
-      });
-      if (register) return _react.default.createElement(_registrationView.RegistrationView, {
-        onClick: function onClick() {
-          return _this4.alreadyMember();
-        },
-        onSignedIn: function onSignedIn(user) {
-          return _this4.onSignedIn(user);
-        }
-      });
-      if (!movies) return _react.default.createElement("div", {
-        className: "main-view"
-      });
-      return _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement(_reactRouterDom.BrowserRouter, {
+      var movies = this.props.movies;
+      var profileData = this.props.profileData;
+      var user = this.state.user;
+      return _react.default.createElement(_reactRouterDom.BrowserRouter, {
         basename: "/client"
       }, _react.default.createElement("div", {
         className: "main-view"
@@ -43849,15 +43830,11 @@ function (_React$Component) {
               return _this4.onLoggedIn(user);
             }
           });
-          return movies.map(function (m) {
-            return _react.default.createElement(_movieCard.MovieCard, {
-              key: m._id,
-              movie: m
-            });
+          return _react.default.createElement(_moviesList.default, {
+            movies: movies
           });
         }
       }), _react.default.createElement(_reactRouterDom.Route, {
-        exact: true,
         path: "/movies/:movieId",
         render: function render(_ref) {
           var match = _ref.match;
@@ -43866,6 +43843,11 @@ function (_React$Component) {
               return m._id === match.params.movieId;
             })
           });
+        }
+      }), _react.default.createElement(_reactRouterDom.Route, {
+        path: "/register",
+        render: function render() {
+          return _react.default.createElement(_registrationView.RegistrationView, null);
         }
       }), _react.default.createElement(_reactRouterDom.Route, {
         path: "/users/:Username",
@@ -43914,14 +43896,12 @@ function (_React$Component) {
             }).Director
           });
         }
-      }))));
+      })));
     }
   }]);
 
   return MainView;
 }(_react.default.Component);
-
-exports.MainView = MainView;
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
@@ -44091,7 +44071,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64228" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57407" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
