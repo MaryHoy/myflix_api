@@ -133,7 +133,7 @@ class MainView extends React.Component {
     let { user } = this.state;
 
     return (
-      <Router>
+      <Router basename="/client">
          <div className="main-view">
          <Link to={`/users/${user}`}>
             <Button variant="primary" type="submit">Profile
