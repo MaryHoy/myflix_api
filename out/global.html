@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Global</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Global</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2></h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="addToFavorites()%7Bconst%7Bmovie%7D=this.props;constuser=localStorage.getItem(%22user%22);consttoken=localStorage.getItem(%22token%22);console.log(%7Btoken%7D);axios.post(%60https://hoymyflix.herokuapp.com/users/$%7Buser%7D/favorites/$%7Bmovie._id%7D%60,null,%7Bheaders:%7BAuthorization:%60Bearer$%7Btoken%7D%60%7D%7D).then(res=%3E%7Bconsole.log(res);window.location.reload();%7D).catch(error=%3E%7Bconsole.log(error);%7D);%7Dexampleresponse:Jsonofusersupdatedlistoffavorites"><span class="type-signature"></span>addToFavorites() {
+ const { movie} = this.props;
+ const user = localStorage.getItem("user");
+ const token = localStorage.getItem("token");
+ console.log({ token });
+ axios
+   .post(
+     `https://hoymyflix.herokuapp.com/users/${user}/favorites/${
+       movie._id
+     }`,
+     null,
+     { headers: { Authorization: `Bearer ${token}` } }
+   )
+   .then(res => {
+     console.log(res);
+     window.location.reload();
+   })
+   .catch(error => {
+     console.log(error);
+   });
+}
+example response:
+Json of users updated list of favorites<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    endpoint post add a movie to users favorites
+endpoint URL: /users/:username/favorites/:movieID
+POST request
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line333">line 333</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getMovies(token)%7Baxios.get(%22https://hoymyflix.herokuapp.com/movies%22,%7Bheaders:%7BAuthorization:%60Bearer$%7Btoken%7D%60%7D%7D).then(response=%3E%7Bthis.props.setMovies(response.data);%7D).catch(function(error)%7Bconsole.log(error);%7D);%7Dexampleresponse:"><span class="type-signature"></span>getMovies(token) {
+ axios
+   .get("https://hoymyflix.herokuapp.com/movies", {
+     headers: { Authorization: `Bearer ${token}` }
+   })
+   .then(response => {
+     this.props.setMovies(response.data);
+   })
+   .catch(function(error) {
+     console.log(error);
+   });
+}
+example response:<span class="signature">(_id, title, description, director, genre)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    endpoint GET returns a list of all movies
+endpoint URL: /movies
+GET request
+no required params
+example request:
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>title</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>description</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>director</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>genre</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line44">line 44</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="handleDelete(token)%7Bconst%7Buser%7D=this.props;axios.delete(%60https://hoymyflix.herokuapp.com/users/$%7Buser.username%7D%60,%7Bheaders:%7BAuthorization:%60Bearer$%7Btoken%7D%60%7D%7D).then(res=%3E%7BlocalStorage.removeItem(%22token%22);localStorage.removeItem(%22user%22);window.location.reload();%7D).catch(error=%3E%7Bconsole.log(error);%7D);%7Dexampleresponse:usernamewasdeleted"><span class="type-signature"></span>handleDelete(token) {
+ const { user } = this.props;
+ axios
+   .delete(`https://hoymyflix.herokuapp.com/users/${user.username}`, {
+     headers: { Authorization: `Bearer ${token}` }
+   })
+   .then(res => {
+     localStorage.removeItem("token");
+     localStorage.removeItem("user");
+     window.location.reload();
+   })
+   .catch(error => {
+     console.log(error);
+   });
+}
+example response:
+username was deleted<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    endpoint DELETE deletes the user
+endpoint URL: /users/:username
+DELETE request
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line434">line 434</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="handleSubmit=(e)=%3E%7Be.preventDefault();axios.post('https://hoymyflix.herokuapp.com/users',%7Busername:username,email:email,birthday:birthday,password:password,confirmPassword:confirmPassword%7D).then(response=%3E%7Bconstdata=response.data;console.log(data);window.location.assign('/');%7D).catch(e=%3E%7Bconsole.log('errorregisteringtheuser')%7D);%7Dexampleresponse:"><span class="type-signature"></span>handleSubmit = (e) => {
+ e.preventDefault();
+ axios.post('https://hoymyflix.herokuapp.com/users', {
+     username: username,
+     email: email,
+     birthday: birthday,
+     password: password,
+     confirmPassword: confirmPassword
+ })
+ .then(response =>{
+   const data = response.data;
+   console.log(data);
+   window.location.assign('/');
+ })
+ .catch(e => {
+   console.log('error registering the user')
+ });
+}
+example response:<span class="signature">(user)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    endpoint POST allows users to register
+endpoint URL: /users
+POST request
+params required:
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>user</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line161">line 161</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="handleUpdate(token)%7Bconst%7Buser%7D=this.props;const%7Busername,email,birthday,password,confirmPassword%7D=this.state;axios(%7Bmethod:%22put%22,url:%60https://hoymyflix.herokuapp.com/users/$%7Buser.username%7D%60,headers:%7BAuthorization:%60Bearer$%7Btoken%7D%60%7D,data:%7Busername:username,email:email,birthday:birthday,password:password,confirmPassword:confirmPassword%7D%7D).then(response=%3E%7B//constdata=response.data;localStorage.removeItem(%22token%22);localStorage.removeItem(%22user%22);window.location.reload();%7D).catch(e=%3E%7Bconsole.log(%22errorupdatingtheuser%22);%7D);%7Dexampleresponse:"><span class="type-signature"></span>handleUpdate(token) {
+ const { user } = this.props;
+ const { username, email, birthday, password, confirmPassword } = this.state;
+ axios({
+   method: "put",
+   url: `https://hoymyflix.herokuapp.com/users/${user.username}`,
+   headers: {
+     Authorization: `Bearer ${token}`
+   },
+   data: {
+     username: username,
+     email: email,
+     birthday: birthday,
+     password: password,
+     confirmPassword: confirmPassword
+   }
+ })
+   .then(response => {
+     //const data = response.data;
+     localStorage.removeItem("token");
+     localStorage.removeItem("user");
+     window.location.reload();
+   })
+   .catch(e => {
+     console.log("error updating the user");
+   });
+}
+example response:<span class="signature">(user)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    endpoint PUT allow users to update information
+endpoint URL: /users/:username
+PUT request
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>user</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line244">line 244</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addToFavorites()%257Bconst%257Bmovie%257D=this.props;constuser=localStorage.getItem(%2522user%2522);consttoken=localStorage.getItem(%2522token%2522);console.log(%257Btoken%257D);axios.post(%2560https://hoymyflix.herokuapp.com/users/$%257Buser%257D/favorites/$%257Bmovie._id%257D%2560,null,%257Bheaders:%257BAuthorization:%2560Bearer$%257Btoken%257D%2560%257D%257D).then(res=%253E%257Bconsole.log(res);window.location.reload();%257D).catch(error=%253E%257Bconsole.log(error);%257D);%257Dexampleresponse:Jsonofusersupdatedlistoffavorites">addToFavorites() {
+ const { movie} = this.props;
+ const user = localStorage.getItem("user");
+ const token = localStorage.getItem("token");
+ console.log({ token });
+ axios
+   .post(
+     `https://hoymyflix.herokuapp.com/users/${user}/favorites/${
+       movie._id
+     }`,
+     null,
+     { headers: { Authorization: `Bearer ${token}` } }
+   )
+   .then(res => {
+     console.log(res);
+     window.location.reload();
+   })
+   .catch(error => {
+     console.log(error);
+   });
+}
+example response:
+Json of users updated list of favorites</a></li><li><a href="global.html#getMovies(token)%257Baxios.get(%2522https://hoymyflix.herokuapp.com/movies%2522,%257Bheaders:%257BAuthorization:%2560Bearer$%257Btoken%257D%2560%257D%257D).then(response=%253E%257Bthis.props.setMovies(response.data);%257D).catch(function(error)%257Bconsole.log(error);%257D);%257Dexampleresponse:">getMovies(token) {
+ axios
+   .get("https://hoymyflix.herokuapp.com/movies", {
+     headers: { Authorization: `Bearer ${token}` }
+   })
+   .then(response => {
+     this.props.setMovies(response.data);
+   })
+   .catch(function(error) {
+     console.log(error);
+   });
+}
+example response:</a></li><li><a href="global.html#handleDelete(token)%257Bconst%257Buser%257D=this.props;axios.delete(%2560https://hoymyflix.herokuapp.com/users/$%257Buser.username%257D%2560,%257Bheaders:%257BAuthorization:%2560Bearer$%257Btoken%257D%2560%257D%257D).then(res=%253E%257BlocalStorage.removeItem(%2522token%2522);localStorage.removeItem(%2522user%2522);window.location.reload();%257D).catch(error=%253E%257Bconsole.log(error);%257D);%257Dexampleresponse:usernamewasdeleted">handleDelete(token) {
+ const { user } = this.props;
+ axios
+   .delete(`https://hoymyflix.herokuapp.com/users/${user.username}`, {
+     headers: { Authorization: `Bearer ${token}` }
+   })
+   .then(res => {
+     localStorage.removeItem("token");
+     localStorage.removeItem("user");
+     window.location.reload();
+   })
+   .catch(error => {
+     console.log(error);
+   });
+}
+example response:
+username was deleted</a></li><li><a href="global.html#handleSubmit=(e)=%253E%257Be.preventDefault();axios.post('https://hoymyflix.herokuapp.com/users',%257Busername:username,email:email,birthday:birthday,password:password,confirmPassword:confirmPassword%257D).then(response=%253E%257Bconstdata=response.data;console.log(data);window.location.assign('/');%257D).catch(e=%253E%257Bconsole.log('errorregisteringtheuser')%257D);%257Dexampleresponse:">handleSubmit = (e) => {
+ e.preventDefault();
+ axios.post('https://hoymyflix.herokuapp.com/users', {
+     username: username,
+     email: email,
+     birthday: birthday,
+     password: password,
+     confirmPassword: confirmPassword
+ })
+ .then(response =>{
+   const data = response.data;
+   console.log(data);
+   window.location.assign('/');
+ })
+ .catch(e => {
+   console.log('error registering the user')
+ });
+}
+example response:</a></li><li><a href="global.html#handleUpdate(token)%257Bconst%257Buser%257D=this.props;const%257Busername,email,birthday,password,confirmPassword%257D=this.state;axios(%257Bmethod:%2522put%2522,url:%2560https://hoymyflix.herokuapp.com/users/$%257Buser.username%257D%2560,headers:%257BAuthorization:%2560Bearer$%257Btoken%257D%2560%257D,data:%257Busername:username,email:email,birthday:birthday,password:password,confirmPassword:confirmPassword%257D%257D).then(response=%253E%257B//constdata=response.data;localStorage.removeItem(%2522token%2522);localStorage.removeItem(%2522user%2522);window.location.reload();%257D).catch(e=%253E%257Bconsole.log(%2522errorupdatingtheuser%2522);%257D);%257Dexampleresponse:">handleUpdate(token) {
+ const { user } = this.props;
+ const { username, email, birthday, password, confirmPassword } = this.state;
+ axios({
+   method: "put",
+   url: `https://hoymyflix.herokuapp.com/users/${user.username}`,
+   headers: {
+     Authorization: `Bearer ${token}`
+   },
+   data: {
+     username: username,
+     email: email,
+     birthday: birthday,
+     password: password,
+     confirmPassword: confirmPassword
+   }
+ })
+   .then(response => {
+     //const data = response.data;
+     localStorage.removeItem("token");
+     localStorage.removeItem("user");
+     window.location.reload();
+   })
+   .catch(e => {
+     console.log("error updating the user");
+   });
+}
+example response:</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Wed Apr 22 2020 17:18:00 GMT-0700 (Pacific Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,4 +1,32 @@
-const path = require("path");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: index.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: index.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const path = require("path");
 
 const express = require("express"),
   bodyParser = require("body-parser"),
@@ -16,7 +44,7 @@ const cors = require("cors");
 //mongoose.connect("mongodb://localhost:27017/test", { useNewUrlParser: true });
 /* connect to mongodb */
 mongoose.connect(
-  "mongodb+srv://maryhoy:1981@cluster0-uufoi.mongodb.net/myFlixDB?retryWrites=true&w=majority",
+  "mongodb+srv://maryhoy:1981@cluster0-uufoi.mongodb.net/myFlixDB?retryWrites=true&amp;w=majority",
   { useNewUrlParser: true }
 );
 
@@ -479,3 +507,121 @@ app.listen(port, "0.0.0.0", function() {
   console.log("Listening on Port 3000");
 });
 
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addToFavorites()%257Bconst%257Bmovie%257D=this.props;constuser=localStorage.getItem(%2522user%2522);consttoken=localStorage.getItem(%2522token%2522);console.log(%257Btoken%257D);axios.post(%2560https://hoymyflix.herokuapp.com/users/$%257Buser%257D/favorites/$%257Bmovie._id%257D%2560,null,%257Bheaders:%257BAuthorization:%2560Bearer$%257Btoken%257D%2560%257D%257D).then(res=%253E%257Bconsole.log(res);window.location.reload();%257D).catch(error=%253E%257Bconsole.log(error);%257D);%257Dexampleresponse:Jsonofusersupdatedlistoffavorites">addToFavorites() {
+ const { movie} = this.props;
+ const user = localStorage.getItem("user");
+ const token = localStorage.getItem("token");
+ console.log({ token });
+ axios
+   .post(
+     `https://hoymyflix.herokuapp.com/users/${user}/favorites/${
+       movie._id
+     }`,
+     null,
+     { headers: { Authorization: `Bearer ${token}` } }
+   )
+   .then(res => {
+     console.log(res);
+     window.location.reload();
+   })
+   .catch(error => {
+     console.log(error);
+   });
+}
+example response:
+Json of users updated list of favorites</a></li><li><a href="global.html#getMovies(token)%257Baxios.get(%2522https://hoymyflix.herokuapp.com/movies%2522,%257Bheaders:%257BAuthorization:%2560Bearer$%257Btoken%257D%2560%257D%257D).then(response=%253E%257Bthis.props.setMovies(response.data);%257D).catch(function(error)%257Bconsole.log(error);%257D);%257Dexampleresponse:">getMovies(token) {
+ axios
+   .get("https://hoymyflix.herokuapp.com/movies", {
+     headers: { Authorization: `Bearer ${token}` }
+   })
+   .then(response => {
+     this.props.setMovies(response.data);
+   })
+   .catch(function(error) {
+     console.log(error);
+   });
+}
+example response:</a></li><li><a href="global.html#handleDelete(token)%257Bconst%257Buser%257D=this.props;axios.delete(%2560https://hoymyflix.herokuapp.com/users/$%257Buser.username%257D%2560,%257Bheaders:%257BAuthorization:%2560Bearer$%257Btoken%257D%2560%257D%257D).then(res=%253E%257BlocalStorage.removeItem(%2522token%2522);localStorage.removeItem(%2522user%2522);window.location.reload();%257D).catch(error=%253E%257Bconsole.log(error);%257D);%257Dexampleresponse:usernamewasdeleted">handleDelete(token) {
+ const { user } = this.props;
+ axios
+   .delete(`https://hoymyflix.herokuapp.com/users/${user.username}`, {
+     headers: { Authorization: `Bearer ${token}` }
+   })
+   .then(res => {
+     localStorage.removeItem("token");
+     localStorage.removeItem("user");
+     window.location.reload();
+   })
+   .catch(error => {
+     console.log(error);
+   });
+}
+example response:
+username was deleted</a></li><li><a href="global.html#handleSubmit=(e)=%253E%257Be.preventDefault();axios.post('https://hoymyflix.herokuapp.com/users',%257Busername:username,email:email,birthday:birthday,password:password,confirmPassword:confirmPassword%257D).then(response=%253E%257Bconstdata=response.data;console.log(data);window.location.assign('/');%257D).catch(e=%253E%257Bconsole.log('errorregisteringtheuser')%257D);%257Dexampleresponse:">handleSubmit = (e) => {
+ e.preventDefault();
+ axios.post('https://hoymyflix.herokuapp.com/users', {
+     username: username,
+     email: email,
+     birthday: birthday,
+     password: password,
+     confirmPassword: confirmPassword
+ })
+ .then(response =>{
+   const data = response.data;
+   console.log(data);
+   window.location.assign('/');
+ })
+ .catch(e => {
+   console.log('error registering the user')
+ });
+}
+example response:</a></li><li><a href="global.html#handleUpdate(token)%257Bconst%257Buser%257D=this.props;const%257Busername,email,birthday,password,confirmPassword%257D=this.state;axios(%257Bmethod:%2522put%2522,url:%2560https://hoymyflix.herokuapp.com/users/$%257Buser.username%257D%2560,headers:%257BAuthorization:%2560Bearer$%257Btoken%257D%2560%257D,data:%257Busername:username,email:email,birthday:birthday,password:password,confirmPassword:confirmPassword%257D%257D).then(response=%253E%257B//constdata=response.data;localStorage.removeItem(%2522token%2522);localStorage.removeItem(%2522user%2522);window.location.reload();%257D).catch(e=%253E%257Bconsole.log(%2522errorupdatingtheuser%2522);%257D);%257Dexampleresponse:">handleUpdate(token) {
+ const { user } = this.props;
+ const { username, email, birthday, password, confirmPassword } = this.state;
+ axios({
+   method: "put",
+   url: `https://hoymyflix.herokuapp.com/users/${user.username}`,
+   headers: {
+     Authorization: `Bearer ${token}`
+   },
+   data: {
+     username: username,
+     email: email,
+     birthday: birthday,
+     password: password,
+     confirmPassword: confirmPassword
+   }
+ })
+   .then(response => {
+     //const data = response.data;
+     localStorage.removeItem("token");
+     localStorage.removeItem("user");
+     window.location.reload();
+   })
+   .catch(e => {
+     console.log("error updating the user");
+   });
+}
+example response:</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Wed Apr 22 2020 17:18:00 GMT-0700 (Pacific Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
